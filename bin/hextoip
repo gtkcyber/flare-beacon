@@ -2,7 +2,7 @@
 
 import argparse
 
-from flare.tools.iputils import hex_to_ip
+from flare_beacon.tools.iputils import hex_to_ip
 
 
 def main():

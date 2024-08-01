@@ -1,5 +1,5 @@
 # Modules that have multiple dependencies and have trouble being installed through PIP
-sklearn
+scikit-learn
 scipy
 
 # Modules available through PyPy

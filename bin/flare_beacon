@@ -5,8 +5,8 @@
 #www.austintaylor.io
 
 
-from flare.analytics.command_control import elasticBeacon
-from flare.tools.utils import bcolors
+from flare_beacon.analytics.command_control import elasticBeacon
+from flare_beacon.tools.utils import bcolors
 import argparse
 import sys
 

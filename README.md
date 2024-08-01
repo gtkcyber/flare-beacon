@@ -3,7 +3,7 @@
 
 ---
 
-Flare is a network analytic framework designed for data scientists, security researchers, and network professionals. Written in Python, it is designed for rapid prototyping and development of behavioral analytics, and intended to make identifying malicious behavior in networks as simple as possible.
+Flare Beacon is a network analytic framework designed for data scientists, security researchers, and network professionals. Written in Python, it is designed for rapid prototyping and development of behavioral analytics, and intended to make identifying malicious behavior in networks as simple as possible.
 
 Getting Started
 ---------------
@@ -23,7 +23,7 @@ Once **Flare** is installed you may use it via the command line by calling **fla
 Example command below:
 
 ```bash
-flare_beacon -c /path/to/flare/config/elasticsearch.ini --focus_outbound --whois flare_beacon -json /tmp/flare.json
+flare_beacon -c /path/to/flare_beacon/config/elasticsearch.ini --focus_outbound --whois flare_beacon -json /tmp/flare_beacon.json
 ```
 
 Core Features
@@ -49,7 +49,7 @@ Designed for elasticsearch and Suricata, elasticBeacon will connect to your elas
 You may need to forward port 9200 to your localhost with **ssh -NfL 9200:localhost:9200 user@x.x.x.x**
 
 ```python
-from flare.analytics.command_control import elasticBeacon
+from flare_beacon.analytics.command_control import elasticBeacon
 
 eb = elasticBeacon(es_host='localhost')
 beacons = eb.find_beacons(group=True, focus_outbound=True)
@@ -65,7 +65,7 @@ HTML OUTPUT
 flare_beacon --group --whois --focus_outbound -c configs/elasticsearch.ini -html beacons.html
 
 JSON OUTPUT (for SIEM)
-flare_beacon --whois --focus_outbound -c /opt/flare-master/configs/selks4.ini -json beacon.json -v
+flare_beacon --whois --focus_outbound -c /opt/flare_beacon-master/configs/selks4.ini -json beacon.json -v
 
 ```
 
@@ -78,7 +78,7 @@ Domain Features
 Alexa
 -----
 ```python
-from flare.tools.alexa import Alexa
+from flare_beacon.tools.alexa import Alexa
 alexa = Alexa(limit=1000000)
 
 print alexa.domain_in_alexa('google.com') # Returns True
@@ -91,14 +91,14 @@ IP Utilities
 ------------
 ```python
 
-from flare.tools.whoisip import WhoisLookup
+from flare_beacon.tools.whoisip import WhoisLookup
 
 whois = WhoisLookup()
 whois.get_name_by_ip('8.8.8.8')
 
 OUT: 'GOOGLE - Google Inc., US'
 
-from flare.tools.iputils import hex_to_ip, ip_to_hex
+from flare_beacon.tools.iputils import hex_to_ip, ip_to_hex
 
 ip_to_hex('8.8.8.8'), hex_to_ip('08080808')
 
@@ -112,7 +112,7 @@ OUT: (u'08080808', '8.8.8.8')
 Data Science Features
 ---------------------
 ```python
-from flare.data_science.features import dga_classifier
+from flare_beacon.data_science.features import dga_classifier
 
 dga_c = dga_classifier()
 
@@ -125,11 +125,11 @@ dga
 
 
 ```python
-from flare.data_science.features import entropy
-from flare.data_science.features import ip_matcher
-from flare.data_science.features import domain_extract
-from flare.data_science.features import levenshtein
-from flare.data_science.features import domain_tld_extract
+from flare_beacon.data_science.features import entropy
+from flare_beacon.data_science.features import ip_matcher
+from flare_beacon.data_science.features import domain_extract
+from flare_beacon.data_science.features import levenshtein
+from flare_beacon.data_science.features import domain_tld_extract
 
 # Entropy example
 print entropy('akd93ka8a91a')

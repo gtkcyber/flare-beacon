@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='Flare',
+    name='Flare Beacon',
     version='0.4',
     platforms=["any"],  # or more specific, e.g. "win32", "cygwin", "osx"
     license="""MIT License
@@ -25,28 +25,28 @@ setup(
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.""",
-    long_description='Flare is a network analytic framework designed for data scientists, security researchers, and network professionals. Written in Python, it is designed for rapid prototyping and development of behavioral analytics, and intended to make identifying malicious behavior in networks as simple as possible.',
+    long_description='Flare Beacon is a network analytic framework designed for data scientists, security researchers, and network professionals. Written in Python, it is designed for rapid prototyping and development of behavioral analytics, and intended to make identifying malicious behavior in networks as simple as possible.',
     packages=find_packages(),
     scripts=['bin/hextoip', 'bin/iptohex', 'bin/ipwhois', 'bin/flare_beacon'],
-    data_files=[('flare/data/whoisip', [
-        'flare/data/whoisip/asn_names.pkl',
-        'flare/data/whoisip/ipasn.dat']),
-        ('flare/data/majestic', [
-            'flare/data/majestic/majestic_million.pkl']),
-        ('flare/data/tld', [
-            'flare/data/tld/tld_list.pkl']),
-        ('flare/data/alexa', [
-            'flare/data/alexa/subdomains-top1mil.txt',
-            'flare/data/alexa/top-1m.csv']),
-        ('flare/data/tld', [
-            'flare/data/tld/tld_list.pkl']),
-        ('flare/data/misc', [
-            'flare/data/misc/dga_domains.txt',
-            'flare/data/misc/words.txt']),
-        ('flare/data/common_crawl', [
-            'flare/data/common_crawl/common-crawl-1m.csv']),
-        ('flare/data/umbrella', [
-            'flare/data/umbrella/top-1m.csv']),
+    data_files=[('flare_beacon/data/whoisip', [
+        'flare_beacon/data/whoisip/asn_names.pkl',
+        'flare_beacon/data/whoisip/ipasn.dat']),
+        ('flare_beacon/data/majestic', [
+            'flare_beacon/data/majestic/majestic_million.pkl']),
+        ('flare_beacon/data/tld', [
+            'flare_beacon/data/tld/tld_list.pkl']),
+        ('flare_beacon/data/alexa', [
+            'flare_beacon/data/alexa/subdomains-top1mil.txt',
+            'flare_beacon/data/alexa/top-1m.csv']),
+        ('flare_beacon/data/tld', [
+            'flare_beacon/data/tld/tld_list.pkl']),
+        ('flare_beacon/data/misc', [
+            'flare_beacon/data/misc/dga_domains.txt',
+            'flare_beacon/data/misc/words.csv']),
+        ('flare_beacon/data/common_crawl', [
+            'flare_beacon/data/common_crawl/common-crawl-1m.csv']),
+        ('flare_beacon/data/umbrella', [
+            'flare_beacon/data/umbrella/top-1m.csv']),
     ],
      extras_require={
         ':python_version == "2.7"': [
