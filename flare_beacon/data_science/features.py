@@ -222,7 +222,8 @@ class dga_classifier(object):
 
         not_weird = all_domains[all_domains['class'] != 'weird']
         # X = not_weird.as_matrix(['length', 'entropy', 'alexa_grams', 'word_grams'])
-        X = not_weird[['length', 'entropy', 'alexa_grams', 'word_grams']].values
+        # X = not_weird[['length', 'entropy', 'alexa_grams', 'word_grams']].values
+        X = not_weird[['length', 'entropy', 'alexa_grams', 'word_grams']].to_numpy(copy=True)
 
         # Labels (scikit learn uses 'y' for classification labels)
         y = np.array(not_weird['class'].tolist())
@@ -266,7 +267,6 @@ class dga_classifier(object):
             warnings.simplefilter("ignore")
             _alexa_match = self.alexa_counts * self.alexa_vc.transform([domain]).T  # Matrix multiply and transpose
             _dict_match = self.dict_counts * self.dict_vc.transform([domain]).T
-            _X = [len(domain), self.entropy(domain), _alexa_match, _dict_match]
-            if int(sklearn.__version__.split('.')[1]) > 20:
-                _X = [_X]
+            _X = pd.DataFrame([[len(domain), self.entropy(domain), _alexa_match, _dict_match]])
+
             return self.clf.predict(_X)[0]
